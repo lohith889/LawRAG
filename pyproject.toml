@@ -4,10 +4,15 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [
-    { name = "Aravindraj2006", email = "lohith.24ad@kct.ac.in" }
+    { name = "lohith889", email = "lohith.24ad@kct.ac.in" }
 ]
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "pdfplumber>=0.11.10",
+    "pymupdf>=1.28.2",
+    "regex>=2026.7.19",
+    "tqdm>=4.70.0",
+]
 
 [project.scripts]
 lawrag = "lawrag:main"
