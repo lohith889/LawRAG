@@ -16,14 +16,14 @@ def text_extractor(path):
     return pages
 
 if __name__=="__main__":
-    folder_path="D:\lohith\LawRAG\Raw file"
+    folder_path="D:\lohith\LawRAG\data\Raw file"
     for item in os.listdir(folder_path):
         pdf=os.path.join(folder_path,item)
         pages=text_extractor(pdf)
         for page in pages:
             page["text"]=parser_utils.clean_text(page["text"])
 
-        output_folder="D:\lohith\LawRAG\Parsed_Files"
+        output_folder="D:\lohith\LawRAG\data\Parsed_Files"
         iter=item+".json"
         output_path=os.path.join(output_folder,iter)
         save_json.save_json(pages,output_path)
