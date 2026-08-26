@@ -11,7 +11,8 @@ def chunk(path):
     prev_overlap=""
     for page in doc:
         chunked,prev_overlap=chunker.chunk_page(page,prev_overlap)
-        chunk.append(chunked)
+        for x in chunked:
+            chunk.append(x)
         
     return chunk
 
@@ -24,5 +25,5 @@ if __name__=='__main__':
 
         chunks=chunk(path)
 
-        output_path=os.path.join("D:\lohith\LawRAG\data\chunked_Files",item+".json")
+        output_path=os.path.join("D:\lohith\LawRAG\data\chunked_Files",item)
         save_json.save_json(chunks,output_path)
