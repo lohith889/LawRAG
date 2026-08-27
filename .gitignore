@@ -11,3 +11,6 @@ wheels/
 
 #data
 data/
+
+#database
+database/store_db

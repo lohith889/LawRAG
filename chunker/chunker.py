@@ -3,13 +3,13 @@ from typing import Any
 
 MAX_TOKENS=350
 
-def chunk_page(page:dict[str,Any],og_overlap:str)->tuple[list[dict[str,Any]],str]:
+def chunk_page(page:dict[str,Any],og_overlap:str,id:int)->tuple[list[dict[str,Any]],str]:
     text=page['text'].strip()
 
     if tokenizer_utils.count_token(text)<=MAX_TOKENS:
         return [{
             **page,
-            "chunk_id":f"page_{page['page']:03d}_001",
+            "chunk_id":f"page_{id}_{page['page']:03d}_001",
             "chunk_text":text,
             "token_count":tokenizer_utils.count_token(text)
         }],tokenizer_utils.sentence_splitter(text)[-1]
@@ -29,7 +29,7 @@ def chunk_page(page:dict[str,Any],og_overlap:str)->tuple[list[dict[str,Any]],str
             chunk_text=overlap+" "+chunk_text
             chunks.append({
                 **page,
-                "chunk_id":f"page_{page['page']:03d}_{chunk_number:03d}",
+                "chunk_id":f"page_{id}_{page['page']:03d}_{chunk_number:03d}",
                 "chunk_text":chunk_text,
                 "token_count":current_token_count+tokenizer_utils.count_token(overlap)
             })
@@ -47,7 +47,7 @@ def chunk_page(page:dict[str,Any],og_overlap:str)->tuple[list[dict[str,Any]],str
         chunk_text=overlap+" "+chunk_text
         chunks.append({
             **page,
-            "chunk_id":f"page_{page['page']:03d}_{chunk_number:03d}",
+            "chunk_id":f"page_{id}_{page['page']:03d}_{chunk_number:03d}",
             "chunk_text":chunk_text,
             "token_count":current_token_count+tokenizer_utils.count_token(overlap)
         })
