@@ -14,3 +14,11 @@ data/
 
 #database
 database/store_db
+
+#evaluation
+Embed/embedding_evaluation.py/
+
+#model files
+Save_model/Model_files/
+
+/.env 
